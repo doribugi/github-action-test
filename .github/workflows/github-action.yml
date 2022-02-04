@@ -36,7 +36,7 @@ jobs:
           echo test, and deploy your project.
           
       - name: Set Today
-        run: today::$(date +'%Y%m%d')
+        run: echo today=$(date +%Y%m%d) >> $GITHUB_ENV
       
       - name: Echo Today
-        run: echo $today
+        run: echo env.today
