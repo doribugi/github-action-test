@@ -43,7 +43,7 @@ jobs:
 
       - name: Set Tag (PR)
         if: ${{ github.event_name == 'pull_request' }}
-        run: echo tag = pr-${{github.ref}}-${{ env.today }}.${{github.run_number}} >> $GITHUB_ENV
+        run: echo tag = pr-${{github.head_ref}}-${{ env.today }}.${{github.run_number}} >> $GITHUB_ENV
         
       - name: Set Tag (Push)
         if: ${{ github.event_name != 'pull_request' }}
