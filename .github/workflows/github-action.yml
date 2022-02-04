@@ -49,5 +49,5 @@ jobs:
         if: ${{ github.event_name != 'pull_request' }}
         run: echo tag = ${{github.ref_name}}-${{ env.today }}.${{github.run_number}} >> $GITHUB_ENV
 
-      - name: Echo Version
-        run: echo ${{ env.today }}.${{github.run_number}}
+      - name: Echo Tag
+        run: echo ${{ env.tag }}
