@@ -39,4 +39,4 @@ jobs:
         run: echo today=$(date +%Y%m%d) >> $GITHUB_ENV
       
       - name: Echo Today
-        run: echo env.today
+        run: echo ${{ env.today }}
