@@ -37,9 +37,6 @@ jobs:
           
       - name: Set Today
         run: echo today=$(date +%Y%m%d) >> $GITHUB_ENV
-      
-      - name: Echo Today
-        run: echo ${{ env.today }}
 
       - name: Set Tag (PR)
         if: ${{ github.event_name == 'pull_request' }}
