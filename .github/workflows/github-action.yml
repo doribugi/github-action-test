@@ -40,3 +40,6 @@ jobs:
       
       - name: Echo Today
         run: echo ${{ env.today }}
+
+      - name: Echo Version
+        run: echo ${{ env.today }}.${{github.run_number}}
