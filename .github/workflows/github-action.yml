@@ -40,11 +40,11 @@ jobs:
 
       - name: Set Tag (PR)
         if: ${{ github.event_name == 'pull_request' }}
-        run: echo tag = pr-${github.head_ref}-${{ env.today }}.${{github.run_number}} | sed -e "s/\//\-/g" >> $GITHUB_ENV
+        run: echo tag = pr-${{github.head_ref}}-${{ env.today }}.${{github.run_number}} | sed -e "s/\//\-/g" >> $GITHUB_ENV
         
       - name: Set Tag (Push)
         if: ${{ github.event_name != 'pull_request' }}
-        run: echo tag = ${github.ref_name}-${{ env.today }}.${{github.run_number}} | sed -e "s/\//\-/g" >> $GITHUB_ENV
+        run: echo tag = ${{github.ref_name}}-${{ env.today }}.${{github.run_number}} | sed -e "s/\//\-/g" >> $GITHUB_ENV
 
       - name: Echo Tag
         run: echo ${{ env.tag }}
