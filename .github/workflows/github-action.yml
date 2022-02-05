@@ -38,13 +38,13 @@ jobs:
       - name: Set Today
         run: echo today=$(date +%Y%m%d) >> $GITHUB_ENV
 
-      - name: Set Tag (PR)
-        if: ${{ github.event_name == 'pull_request' }}
-        run: echo tag = pr-${{github.head_ref}}-${{ env.today }}.${{github.run_number}} | sed -e "s/\//\-/g" >> $GITHUB_ENV
-        
-      - name: Set Tag (Push)
-        if: ${{ github.event_name != 'pull_request' }}
-        run: echo tag = ${{github.ref_name}}-${{ env.today }}.${{github.run_number}} | sed -e "s/\//\-/g" >> $GITHUB_ENV
-
+      - name: Set Tag
+        run: |
+          if ${{ github.event_name == 'pull_request' }}; then
+            echo tag = pr-${{github.head_ref}}-${{ env.today }}.${{github.run_number}} | sed -e "s/\//\-/g" >> $GITHUB_ENV
+          else
+            echo tag = ${{github.ref_name}}-${{ env.today }}.${{github.run_number}} | sed -e "s/\//\-/g" >> $GITHUB_ENV
+          fi
+          
       - name: Echo Tag
         run: echo ${{ env.tag }}
