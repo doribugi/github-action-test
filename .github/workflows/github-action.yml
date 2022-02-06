@@ -43,8 +43,8 @@ jobs:
           if ${{ github.event_name == 'pull_request' }}; then
             echo tag = pr-${{github.head_ref}}-${{ env.today }}.${{github.run_number}} | sed -e "s/\//\-/g" >> $GITHUB_ENV
           else
-            echo "tag = $(echo ${{github.ref_name}}-${{ env.today }}.${{github.run_number}} | sed -e 's/\//\-/g')" >> $GITHUB_ENV
+            echo tag = ${{github.ref_name}}-${{ env.today }}.${{github.run_number}} >> $GITHUB_ENV
           fi
           
       - name: Echo Tag
-        run: echo $tag
+        run: echo {{ $env.tag }}
