@@ -47,4 +47,4 @@ jobs:
           fi
           
       - name: Echo Tag
-        run: echo "${{ env.today }}"
+        run: echo ${{ tag }}
