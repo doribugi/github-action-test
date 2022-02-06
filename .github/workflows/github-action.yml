@@ -47,4 +47,4 @@ jobs:
           fi
           
       - name: Echo Tag
-        run: echo ${{ tag }}
+        run: echo $tag
